@@ -110,14 +110,14 @@ header.topbar {
 }
 .stamp-accent { background: var(--series-2); border-color: var(--series-2); color: #fff; }
 .theme-toggle {
-    background: var(--surface-1);
-    border: 1px solid var(--accent-border);
-    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
     border-radius: 1px;
-    padding: 7px 12px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    padding: 3px 6px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
     font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
@@ -435,20 +435,20 @@ section.chart-section {
         <div class="panel-label">WEATHER — 岐阜県揖斐川町</div>
         <div class="section-sub">8/9 04:25 開始時点</div>
         <div class="weather-now">
-            <div class="wn-icon">☁</div>
-            <div class="wn-temp">25.0°C</div>
-            <div class="wn-detail">曇り ・ 湿度91%</div>
+            <div class="wn-icon">⛅</div>
+            <div class="wn-temp">24.8°C</div>
+            <div class="wn-detail">薄曇り ・ 湿度93%</div>
         </div>
-        <div class="weather-change-note">⚠ 05:35頃には薄曇りに変わる可能性があります(降水確率 9%→2%)</div>
+        
         <div class="weather-forecast"><div class="weather-day">
             <div class="wd-label">8/8(土)</div>
-            <div class="wd-icon">🌤</div>
+            <div class="wd-icon">⛅</div>
             <div class="wd-temp">32°/25°</div>
             <div class="wd-pop">☂89%</div>
         </div><div class="weather-day">
             <div class="wd-label">8/9(日)</div>
-            <div class="wd-icon">☁</div>
-            <div class="wd-temp">32°/25°</div>
+            <div class="wd-icon">🌧</div>
+            <div class="wd-temp">31°/25°</div>
             <div class="wd-pop">☂100%</div>
         </div><div class="weather-day">
             <div class="wd-label">8/10(月)</div>
@@ -879,15 +879,12 @@ function attachCalendarTooltip(svgId) {
     if (!cells.length) return;
 
     const svgRectOf = () => svg.getBoundingClientRect();
-    const viewBoxOf = () => svg.viewBox.baseVal;
 
     const showFor = (cell) => {
         const svgRect = svgRectOf();
-        const viewBox = viewBoxOf();
-        const scale = svgRect.width / viewBox.width;
         const cellRect = cell.getBoundingClientRect();
-        const cx = (cellRect.left + cellRect.width / 2 - svgRect.left) / scale;
-        const cy = (cellRect.top - svgRect.top) / scale;
+        const cx = cellRect.left + cellRect.width / 2 - svgRect.left;
+        const cy = cellRect.top - svgRect.top;
         tooltip.style.left = cx + 'px';
         tooltip.style.top = cy + 'px';
         tooltip.style.display = 'block';
@@ -922,16 +919,13 @@ function attachBarTooltip(svgId) {
     if (!cells.length) return;
 
     const svgRectOf = () => svg.getBoundingClientRect();
-    const viewBoxOf = () => svg.viewBox.baseVal;
 
     const showFor = (cell) => {
         const bar = cell.querySelector('.bar');
         const svgRect = svgRectOf();
-        const viewBox = viewBoxOf();
-        const scale = svgRect.width / viewBox.width;
         const barRect = bar.getBoundingClientRect();
-        const cx = (barRect.left + barRect.width / 2 - svgRect.left) / scale;
-        const cy = (barRect.top - svgRect.top) / scale;
+        const cx = barRect.left + barRect.width / 2 - svgRect.left;
+        const cy = barRect.top - svgRect.top;
         tooltip.style.left = cx + 'px';
         tooltip.style.top = cy + 'px';
         tooltip.style.display = 'block';
