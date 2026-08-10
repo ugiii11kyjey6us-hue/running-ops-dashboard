@@ -124,6 +124,12 @@ header.topbar {
 .theme-icon-moon { display: none; }
 :root[data-theme="light"] .theme-icon-sun { display: none; }
 :root[data-theme="light"] .theme-icon-moon { display: block; }
+.header-updated {
+    position: absolute; right: 14px; bottom: 8px;
+    font-size: 9px; letter-spacing: 0.03em; color: var(--text-muted); opacity: 0.6;
+    font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    pointer-events: none;
+}
 
 /* ACG panel chrome: corner brackets */
 .acg-panel { position: relative; }
@@ -459,7 +465,7 @@ section.chart-section {
             <div class="brand-eyebrow">// FIELD OPS TERMINAL //</div>
             <div class="brand-title">RUNNING <span class="brand-title-accent">OPS</span></div>
             <div class="brand-tags">
-                <span class="stamp">SYNC 2024.10.20 — D+659</span>
+                <span class="stamp">SYNC 2024.10.20 — 1year294days</span>
                 <span class="stamp stamp-accent">401 RUNS LOGGED</span>
             </div>
         </div>
@@ -479,6 +485,7 @@ section.chart-section {
                 <path d="M20.5 14.5c-1.1.4-2.2.6-3.5.6-5 0-9-4-9-9 0-1.3.2-2.4.6-3.5C4.9 3.9 2 7.6 2 12c0 5.5 4.5 10 10 10 4.4 0 8.1-2.9 9.4-6.9-.3.2-.6.3-.9.4z" />
             </svg>
         </button>
+        <div class="header-updated">Last updated 2026.08.10 09:25</div>
     </header>
 
     <section class="acg-panel mission-panel"><span class="brk brk-tl"></span><span class="brk brk-tr"></span><span class="brk brk-bl"></span><span class="brk brk-br"></span>
@@ -534,12 +541,12 @@ section.chart-section {
         </div><div class="weather-day">
             <div class="wd-label">8/14(金)</div>
             <div class="wd-icon">⛈</div>
-            <div class="wd-temp">30°/23°</div>
+            <div class="wd-temp">30°/22°</div>
             <div class="wd-pop">☂72%</div>
         </div><div class="weather-day">
             <div class="wd-label">8/15(土)</div>
             <div class="wd-icon">🌦</div>
-            <div class="wd-temp">30°/22°</div>
+            <div class="wd-temp">30°/21°</div>
             <div class="wd-pop">☂71%</div>
         </div></div>
     </section>
