@@ -163,6 +163,11 @@ header.topbar {
     padding: 20px 22px;
     margin-bottom: 16px;
 }
+.mission-panel::before, .mission-panel::after {
+    content: ""; position: absolute; top: -7px; left: 50%; background: var(--series-2); pointer-events: none;
+}
+.mission-panel::before { width: 1px; height: 14px; margin-left: -0.5px; }
+.mission-panel::after { width: 14px; height: 1px; margin-left: -7px; top: 0; }
 .mission-main { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 .mission-name {
     font-family: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
@@ -179,7 +184,7 @@ header.topbar {
 .mission-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
 .tag {
     font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
     border: 1px solid var(--border); border-radius: 1px; padding: 4px 9px;
     color: var(--text-secondary);
 }
@@ -190,6 +195,10 @@ header.topbar {
 .mission-coords {
     font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
     font-size: 10px; color: var(--text-muted); letter-spacing: 0.04em;
+}
+.wx-coords {
+    font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 6px;
 }
 
 /* Weather panel */
@@ -210,7 +219,7 @@ header.topbar {
     text-align: center; border: 1px solid var(--border); border-radius: 1px; padding: 8px 4px;
     background: var(--surface-2);
 }
-.wd-label { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 10px; color: var(--text-muted); }
+.wd-label { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-muted); }
 .wd-icon { font-size: 18px; margin: 4px 0; }
 .wd-temp { font-size: 11px; font-weight: 600; }
 .wd-pop { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
@@ -221,7 +230,7 @@ header.topbar {
 .splits-panel { background: var(--surface-1); border: 1px solid var(--border); border-radius: 1px; padding: 18px 20px 8px; margin-bottom: 16px; }
 .splits-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
 @media (max-width: 720px) { .splits-grid { grid-template-columns: 1fr; } }
-.splits-subtitle { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px; }
+.splits-subtitle { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 10px; letter-spacing: 0.11em; color: var(--text-muted); margin-bottom: 6px; }
 .plan-summary {
     font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
     color: var(--text-secondary); font-size: 14.5px; margin-bottom: 14px; line-height: 1.75;
@@ -236,7 +245,8 @@ header.topbar {
 .pd-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
 .pd-day { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 13px; font-weight: 700; }
 .pd-date { font-size: 10px; font-weight: 400; color: var(--text-muted); margin-left: 4px; }
-.pd-type { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 9px; letter-spacing: 0.06em; color: var(--type-color); }
+.pd-type { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 9px; letter-spacing: 0.11em; color: var(--type-color); }
+.pd-glyph { display: inline-block; margin-right: 3px; letter-spacing: 0; }
 .pd-dist { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
 .pd-pace { font-size: 10px; color: var(--text-muted); font-weight: 400; }
 .pd-notes {
@@ -247,7 +257,7 @@ header.topbar {
 /* Stat tiles */
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr)); gap: 8px; margin-bottom: 16px; }
 .tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 1px; padding: 8px 10px; }
-.tile-label { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-muted); }
+.tile-label { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 10px; letter-spacing: 0.11em; color: var(--text-muted); }
 .tile-value { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; font-size: 22px; font-weight: 700; margin-top: 3px; }
 .tile-sub { font-size: 11px; color: var(--text-muted); min-height: 0; }
 
@@ -491,7 +501,7 @@ section.chart-section {
                 <path d="M20.5 14.5c-1.1.4-2.2.6-3.5.6-5 0-9-4-9-9 0-1.3.2-2.4.6-3.5C4.9 3.9 2 7.6 2 12c0 5.5 4.5 10 10 10 4.4 0 8.1-2.9 9.4-6.9-.3.2-.6.3-.9.4z" />
             </svg>
         </button>
-        <div class="header-updated">2026.09.14 09:04</div>
+        <div class="header-updated">2026.09.14 13:07</div>
     </header>
 
     <section class="acg-panel mission-panel"><span class="brk brk-tl"></span><span class="brk brk-tr"></span><span class="brk brk-bl"></span><span class="brk brk-br"></span>
@@ -517,43 +527,44 @@ section.chart-section {
     </section>
     <section class="acg-panel weather-panel"><span class="brk brk-tl"></span><span class="brk brk-tr"></span><span class="brk brk-bl"></span><span class="brk brk-br"></span>
         <div class="panel-label">WEATHER — Ibigawa, Gifu, Japan</div>
+        <div class="wx-coords">N 35.4873° E 136.5686°</div>
         <div class="section-sub">9/15 04:25 開始時点</div>
         <div class="weather-now">
             <div class="wn-icon">🌦</div>
-            <div class="wn-temp">23.6°C</div>
-            <div class="wn-detail">霧雨 ・ 湿度99%</div>
+            <div class="wn-temp">23.3°C</div>
+            <div class="wn-detail">霧雨 ・ 湿度99% ・ 風4km/h</div>
         </div>
-        <div class="weather-change-note">⚠ 05:35頃には雨に変わる可能性があります(降水確率 52%→59%)</div>
+        
         <div class="weather-forecast"><div class="weather-day">
             <div class="wd-label">9/14(月)</div>
             <div class="wd-icon">🌧</div>
-            <div class="wd-temp">27°/24°</div>
+            <div class="wd-temp">28°/24°</div>
             <div class="wd-pop">☂100%</div>
         </div><div class="weather-day">
             <div class="wd-label">9/15(火)</div>
             <div class="wd-icon">🌧</div>
             <div class="wd-temp">24°/22°</div>
-            <div class="wd-pop">☂98%</div>
+            <div class="wd-pop">☂94%</div>
         </div><div class="weather-day">
             <div class="wd-label">9/16(水)</div>
             <div class="wd-icon">🌦</div>
             <div class="wd-temp">29°/21°</div>
-            <div class="wd-pop">☂82%</div>
+            <div class="wd-pop">☂85%</div>
         </div><div class="weather-day">
             <div class="wd-label">9/17(木)</div>
             <div class="wd-icon">🌦</div>
-            <div class="wd-temp">28°/21°</div>
-            <div class="wd-pop">☂95%</div>
+            <div class="wd-temp">29°/22°</div>
+            <div class="wd-pop">☂82%</div>
         </div><div class="weather-day">
             <div class="wd-label">9/18(金)</div>
-            <div class="wd-icon">☁</div>
+            <div class="wd-icon">⛅</div>
             <div class="wd-temp">30°/20°</div>
-            <div class="wd-pop">☂30%</div>
+            <div class="wd-pop">☂31%</div>
         </div><div class="weather-day">
             <div class="wd-label">9/19(土)</div>
-            <div class="wd-icon">⛈</div>
-            <div class="wd-temp">30°/22°</div>
-            <div class="wd-pop">☂36%</div>
+            <div class="wd-icon">☁</div>
+            <div class="wd-temp">31°/20°</div>
+            <div class="wd-pop">☂34%</div>
         </div></div>
     </section>
 
@@ -848,7 +859,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">月<span class="pd-date">9/14</span></span>
-                    <span class="pd-type">REST</span>
+                    <span class="pd-type"><span class="pd-glyph">▬</span>[REST]</span>
                 </div>
                 <div class="pd-dist">― <span class="pd-pace"></span></div>
                 <div class="pd-notes">前日74.8kmの超ウルトラ的運動からの完全休養日。脚の張り・違和感を確認し、ストレッチ・補水・睡眠・栄養補給を最優先。ランニングは行わない。</div>
@@ -858,7 +869,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">火<span class="pd-date">9/15</span></span>
-                    <span class="pd-type">RECOVERY</span>
+                    <span class="pd-type"><span class="pd-glyph">◔</span>[RECOVERY]</span>
                 </div>
                 <div class="pd-dist">6.0KM <span class="pd-pace">5:20/km</span></div>
                 <div class="pd-notes">筋肉痛・疲労の様子を見ながらごく緩いジョグ。WU無し、6kmを5:20/km目安で通し(約32分)、心拍が上がるようなら途中歩行も可。質的要素は一切入れない完全回復目的の一本。</div>
@@ -868,7 +879,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">水<span class="pd-date">9/16</span></span>
-                    <span class="pd-type">RECOVERY</span>
+                    <span class="pd-type"><span class="pd-glyph">◔</span>[RECOVERY]</span>
                 </div>
                 <div class="pd-dist">7.0KM <span class="pd-pace">5:10/km</span></div>
                 <div class="pd-notes">火曜の反応を見て脚の張りが軽減していれば距離をわずかに延長。7kmを5:10/km目安で通し(約36分)。呼吸・心拍とも楽な範囲に終始し、翌日以降の質練習判断に向けて体調を見極める。</div>
@@ -878,7 +889,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">木<span class="pd-date">9/17</span></span>
-                    <span class="pd-type">MP PACE</span>
+                    <span class="pd-type"><span class="pd-glyph">◎</span>[MP PACE]</span>
                 </div>
                 <div class="pd-dist">11.0KM <span class="pd-pace">4:05/km(MP区間)</span></div>
                 <div class="pd-notes">HRV・安静時心拍・脚の張りが良好に回復している前提でのみ実施(不調があれば距離7-8kmのeasy 5:00/kmへ振替)。WU 2.5km(約13分・5:20/km)→MP区間4.5km(約22分・4:05/km、目標レースペース4:02/kmよりわずかに余裕を持たせる)→CD 2km(約11分・5:20/km)→流し的なジョグ2km(約11分・5:15/km)で合計11km・約57分。レース前最後のペース確認、テーパーとの間に2日以上のバッファを確保する位置づけ。</div>
@@ -888,7 +899,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">金<span class="pd-date">9/18</span></span>
-                    <span class="pd-type">EASY</span>
+                    <span class="pd-type"><span class="pd-glyph">○</span>[EASY]</span>
                 </div>
                 <div class="pd-dist">8.0KM <span class="pd-pace">5:00/km</span></div>
                 <div class="pd-notes">木曜のMP走からの回復を最優先した軽めのイージー走。8kmを5:00/km目安で通し(約40分)、心拍を意識しながら余裕を持って走る。</div>
@@ -898,7 +909,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">土<span class="pd-date">9/19</span></span>
-                    <span class="pd-type">LONG</span>
+                    <span class="pd-type"><span class="pd-glyph">━</span>[LONG]</span>
                 </div>
                 <div class="pd-dist">16.0KM <span class="pd-pace">4:55/km</span></div>
                 <div class="pd-notes">テーパー導入としての中距離ロング。WU無しで16kmを4:55/km目安で通し(約79分、90分枠内)。ペースは上げず、脚の状態を確認しながら淡々と刻む。これが今大会に向け最後のやや長めの走行になる想定。</div>
@@ -908,7 +919,7 @@ section.chart-section {
             <div class="pd-body">
                 <div class="pd-head">
                     <span class="pd-day">日<span class="pd-date">9/20</span></span>
-                    <span class="pd-type">REST</span>
+                    <span class="pd-type"><span class="pd-glyph">▬</span>[REST]</span>
                 </div>
                 <div class="pd-dist">― <span class="pd-pace"></span></div>
                 <div class="pd-notes">完全オフ。ストレッチ・補水・睡眠を優先し、来週からのテーパーに向けて心身をリセットする。</div>
