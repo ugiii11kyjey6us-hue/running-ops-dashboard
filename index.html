@@ -330,6 +330,45 @@ section.chart-section {
 .note-body li { margin: 5px 0; padding-left: 18px; position: relative; }
 .note-body li::before { content: "▸"; position: absolute; left: 0; color: var(--series-2); font-weight: 700; }
 
+/* Race plan (MISSION TARGET直下の折りたたみ) */
+.race-plan { margin-top: 14px; border-top: 1px solid var(--border); }
+.race-plan summary {
+    cursor: pointer;
+    font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; font-weight: 700;
+    color: var(--series-2); padding: 12px 0 4px; list-style: none;
+}
+.race-plan summary::-webkit-details-marker { display: none; }
+.race-plan summary::before { content: "▸ "; }
+.race-plan[open] summary::before { content: "▾ "; }
+.race-plan-body { padding-top: 6px; font-size: 13px; line-height: 1.7; color: var(--text-secondary); }
+.rp-headline { font-weight: 700; color: var(--text-primary); margin: 4px 0 10px; }
+.rp-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 12px; }
+.rp-table th {
+    text-align: left; font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    font-size: 10px; letter-spacing: 0.1em; font-weight: 600; color: var(--text-muted);
+    padding: 4px 6px 4px 0; border-bottom: 1px solid var(--border);
+}
+.rp-table td { padding: 6px 6px 6px 0; border-bottom: 1px solid var(--gridline); vertical-align: top; }
+.rp-sec, .rp-pace, .rp-pass {
+    font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; white-space: nowrap;
+}
+.rp-sec { color: var(--text-primary); }
+.rp-pace { color: var(--series-2); font-weight: 700; }
+.rp-terrain { color: var(--text-secondary); }
+.rp-block { margin-bottom: 10px; }
+.rp-title {
+    font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    font-size: 10px; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 2px;
+}
+.rp-block ul, .rp-block ol { margin: 0; padding-left: 20px; }
+.rp-block li { margin: 3px 0; }
+.rp-unconfirmed { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+@media (max-width: 520px) {
+    .rp-table .rp-terrain { display: none; }
+    .rp-table th:nth-child(2) { display: none; }
+}
+
 .notes-archive { margin-top: 4px; }
 .notes-archive summary {
     cursor: pointer;
@@ -501,7 +540,7 @@ section.chart-section {
                 <path d="M20.5 14.5c-1.1.4-2.2.6-3.5.6-5 0-9-4-9-9 0-1.3.2-2.4.6-3.5C4.9 3.9 2 7.6 2 12c0 5.5 4.5 10 10 10 4.4 0 8.1-2.9 9.4-6.9-.3.2-.6.3-.9.4z" />
             </svg>
         </button>
-        <div class="header-updated">2026.10.13 12:19</div>
+        <div class="header-updated">2026.10.13 13:31</div>
     </header>
 
     <section class="acg-panel mission-panel"><span class="brk brk-tl"></span><span class="brk brk-tr"></span><span class="brk brk-bl"></span><span class="brk brk-br"></span>
@@ -524,6 +563,16 @@ section.chart-section {
             <span class="tag tag-warn">GOAL DIFF +04:57</span>
         </div>
         <div class="mission-coords">BASIS: 過去182本のワークアウトを心拍数・気温で補正したRiegelの中央値</div>
+        <details class="race-plan">
+            <summary>RACE PLAN — ペース配分・ルール・注意点</summary>
+            <div class="race-plan-body">
+                <div class="rp-headline">前半は抑えるネガティブスプリット。折り返し約41:25、ゴール78:48(目標1:19:00に12秒の余裕)</div>
+                <table class="rp-table"><thead><tr><th>区間</th><th>地形</th><th>ペース/km</th><th>通過</th></tr></thead><tbody><tr><td class="rp-sec">0–1km</td><td class="rp-terrain">スタートの混雑</td><td class="rp-pace">3:55</td><td class="rp-pass">3:55</td></tr><tr><td class="rp-sec">1–5km</td><td class="rp-terrain">平坦〜微上り</td><td class="rp-pace">3:48–3:50</td><td class="rp-pass">5km 19:11</td></tr><tr><td class="rp-sec">5–9km</td><td class="rp-terrain">上り(+67m)。ペースでなくエフォートで</td><td class="rp-pace">3:52–3:58</td><td class="rp-pass">9km 34:46</td></tr><tr><td class="rp-sec">9–12km</td><td class="rp-terrain">頂上〜折り返し(約10.8km)</td><td class="rp-pace">3:42–3:44</td><td class="rp-pass">10km 38:30 / 折り返し 41:25</td></tr><tr><td class="rp-sec">12–16km</td><td class="rp-terrain">下り(−50m)。自然に上がる</td><td class="rp-pace">3:32–3:38</td><td class="rp-pass">16km 60:13</td></tr><tr><td class="rp-sec">16–20km</td><td class="rp-terrain">平坦〜微下り</td><td class="rp-pace">3:39–3:40</td><td class="rp-pass">20km 74:50</td></tr><tr><td class="rp-sec">ラスト</td><td class="rp-terrain">出し切る</td><td class="rp-pace">3:37前後</td><td class="rp-pass">ゴール 78:48</td></tr></tbody></table>
+                <div class="rp-block"><div class="rp-title">RULES</div><ol><li>1〜5kmは「楽すぎる」と感じてOK。昨年の同区間より10〜15秒/km遅く入る。迷ったら5km通過は19:20〜19:30まで落としてよい</li><li>折り返しを40:45より速く通過したら速すぎ。復路は計画に戻す</li><li>前半の平均心拍は160以下が目安(セントジョージは前半が最大心拍の約93%で後半に失速)。上りは心拍が跳ねやすいのでエフォートで見る</li><li>ヴェイパーフライは感覚より速く出る。Apple Watchのペースアラートで9kmまで3:46/kmより速いと鳴るように設定</li><li>ラスト2kmは出し切る。そのための前半の我慢</li></ol></div>
+                <div class="rp-block"><div class="rp-title">NOTES</div><ul><li>スタート9:30(揖斐警察署前)。正式記録はグロスタイム(号砲から)なので、ブロックの前方に並ぶ。1km目は混雑する(昨年3:59)</li><li>受付(体調チェック)6:30〜8:30。ブロックは申込時の自己申告タイム順</li><li>関門: 8.4km 10:45 / 18km 12:05 / ゴール12:30(制限時間3時間)</li><li>補給は走行中ほぼ不要。水を少量だけ。ジェルやエイドの食べ物は使わない</li><li>朝食はスタート3時間前に、いつもの主食(ごはん・餅)。ウォームアップは9:00頃に10分ジョグ+流し、9:15頃にブロックへ</li><li>コース: 往復で外津汲(約10.8km)で折り返し。標高46m→最高135m(9km付近)→ゴール52m。井ノ口橋付近にスイーツエイド</li></ul></div>
+                <div class="rp-unconfirmed">未確認: 給水所の位置・ブロック締切時刻・荷物預かりは未確認(公式サイトの大会案内PDFで確認)</div>
+            </div>
+        </details>
     </section>
     <section class="acg-panel weather-panel"><span class="brk brk-tl"></span><span class="brk brk-tr"></span><span class="brk brk-bl"></span><span class="brk brk-br"></span>
         <div class="panel-label">WEATHER — Ibigawa, Gifu, Japan</div>
